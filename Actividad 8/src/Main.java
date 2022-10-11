@@ -7,21 +7,57 @@ public class Main {
     static String valor;
 
     static String cards;
+    static int operador;
+    static Scanner scan = new Scanner(System.in);
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
+
 
         Deck deck = new Deck();
 
-        shuffle();
-        head();
-        pick();
-        hand();
+        showMenu();
+
         deck.crearMazo();
+
+    }
+
+    private static void showMenu(){
+
+        do {
+            System.out.println("Bienvenido a Poker!");
+            System.out.println("Selecciona una opción:");
+            System.out.println("1 Mezclar deck");
+            System.out.println("2 Sacar una carta");
+            System.out.println("3 Carta al azar");
+            System.out.println("4 Generar una mano de 5 cartas");
+            System.out.println("0 Salir");
+            System.out.println("");
+            operador = scan.nextInt();
+            if (operador>4){
+                System.out.println("Opción no valida");
+            }
+        }while (operador>4);{
+            switch (operador){
+                case 0:
+                    break;
+                case 1:
+                    shuffle();
+                    break;
+                case 2:
+                    head();
+                    break;
+                case 3:
+                    pick();
+                    break;
+                case 4:
+                    hand();
+                    break;
+            }
+        }
     }
 
     private static void shuffle() {
 
-       System.out.print("Se mezclo el Deck");
+       System.out.println("Se mezclo el Deck");
 
     }
 
@@ -36,6 +72,7 @@ public class Main {
     }
 
     private static void hand() {
+
         System.out.println(palo+", "+color+", "+valor);
         System.out.println(palo+", "+color+", "+valor);
         System.out.println(palo+", "+color+", "+valor);
