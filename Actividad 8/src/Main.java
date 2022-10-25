@@ -9,7 +9,7 @@ public class Main {
     static String cards;
     static int operador;
     static Scanner scan = new Scanner(System.in);
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
 
         Deck deck = new Deck();
@@ -20,7 +20,7 @@ public class Main {
 
     }
 
-    private static void showMenu(){
+    private static void showMenu() throws Exception{
 
         do {
             System.out.println("Bienvenido a Poker!");
@@ -33,7 +33,7 @@ public class Main {
             System.out.println("");
             operador = scan.nextInt();
             if (operador>4){
-                System.out.println("Opción no valida");
+                throw new Exception("Opción no valida");
             }
         }while (operador>4);{
             switch (operador){
@@ -61,18 +61,27 @@ public class Main {
 
     }
 
-    private static void head() {
+    private static void head() throws Exception{
+        if (cards == null){
+            throw new Exception("No quedan cartas");
+        }
         System.out.println(palo+", "+color+", "+valor);
         System.out.println("Quedan " +cards);
     }
 
-    private static void pick() {
+    private static void pick() throws Exception{
+        if (cards == null){
+            throw new Exception("No quedan cartas");
+        }
         System.out.println(palo+", "+color+", "+valor);
         System.out.println("Quedan " +cards);
     }
 
-    private static void hand() {
+    private static void hand() throws Exception{
 
+        if (cards == null){
+            throw new Exception("No quedan cartas");
+        }
         System.out.println(palo+", "+color+", "+valor);
         System.out.println(palo+", "+color+", "+valor);
         System.out.println(palo+", "+color+", "+valor);
